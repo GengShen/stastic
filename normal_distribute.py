@@ -3,8 +3,8 @@ class normal_distribute(object):
 
     def __init__(self, aver=0.0, div=1.0):
         '''初始化,aver为正态分布均值,div为正态分布标准差,默认为标准正态分布'''
-        self.aver = aver
-        self.div = div
+        self.aver = float(aver)
+        self.div = float(div)
 
     def st_norm(self, u):
         '''标准正态分布'''
