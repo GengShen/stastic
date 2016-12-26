@@ -1,4 +1,4 @@
-
+# coding=utf-8
 class normal_distribute(object):
 
     def __init__(self, aver=0.0, div=1.0):
