@@ -1,4 +1,8 @@
 # coding=utf-8
+'''
+Author: ShenGeng (453992341@qq.com)
+Time: 2016
+'''
 import pandas as pd
 from normal_distribute import normal_distribute
 
@@ -40,3 +44,22 @@ class stastic:
         '''求标准正态分布下x值对应的概率'''
         n = normal_distribute()
         return n.st_norm(x)
+
+    def reverse_normal_standard(self, p):
+        '''求标准正态分布下,概率p对应的x值, -3.49 < x < 3.49 '''
+        x = -3.49
+        while x <= 3.49:
+            if self.normal_standard(x) >= p:
+                y = 3.49
+                while y >= -3.49:
+                    if self.normal_standard(y) <= p:
+                        return (x + y) / 2
+                    y -= 0.01
+            x += 0.01
+        return "none"
+
+    def confidence_interval(self, m, sita):
+        '''均值为m, 标准差为sita, 返回置信区间'''
+        min = m - 1.96 * sita
+        max = m + 1.96 * sita
+        return (min, max)
