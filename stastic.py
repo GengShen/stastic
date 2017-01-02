@@ -58,8 +58,9 @@ class stastic:
             x += 0.01
         return "none"
 
-    def confidence_interval(self, m, sita):
-        '''均值为m, 标准差为sita, 返回置信区间'''
-        min = m - 1.96 * sita
-        max = m + 1.96 * sita
+    def confidence_interval(self, m, sita, possi):
+        '''均值为m, 标准差为sita, 返回概率为possi的置信区间'''
+        z = self.reverse_normal_standard((1 - possi) / 2)
+        min = m + z * sita
+        max = m - z * sita
         return (min, max)
